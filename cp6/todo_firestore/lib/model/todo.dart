@@ -4,8 +4,12 @@ class TodoContent {
   final String id;
   final String title;
   final String content;
-  TodoStatus state;
-  TodoContent({this.id, this.title, this.content, int stateNum}) {
+  late TodoStatus state;
+  TodoContent(
+      {required this.id,
+      required this.title,
+      required this.content,
+      int? stateNum}) {
     if (stateNum != null) {
       this.state = TodoStatus.values[stateNum];
     } else {

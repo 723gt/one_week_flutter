@@ -3,9 +3,13 @@ enum TodoStatus { to, doing, done }
 class TodoContent {
   final String title;
   final String content;
-  TodoStatus state;
-  TodoContent({this.title, this.content, TodoStatus c}) {
-    this.state = c ?? TodoStatus.to;
+  late TodoStatus state;
+  TodoContent({required this.title, required this.content, TodoStatus? state}) {
+    if (state != null) {
+      this.state = state;
+    } else {
+      this.state = TodoStatus.to;
+    }
   }
 
   void setTo() {

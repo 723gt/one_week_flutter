@@ -5,22 +5,25 @@ import './new_todo_page.dart';
 
 class TodoPage extends StatefulWidget {
   final String title;
-  TodoPage({Key key, this.title}) : super(key: key);
+  TodoPage({Key? key, required this.title}) : super(key: key);
   @override
   _TodoPageState createState() => _TodoPageState();
 }
 
 class _TodoPageState extends State<TodoPage> {
   List<TodoContent> todos = [
-    TodoContent(title: "Todo01", content: "Todo Content01", c: TodoStatus.to),
-    TodoContent(title: "Todo02", content: "Todo Content02", c: TodoStatus.to),
     TodoContent(
-        title: "Todo03", content: "Todo Content03", c: TodoStatus.doing),
+        title: "Todo01", content: "Todo Content01", state: TodoStatus.to),
     TodoContent(
-        title: "Todo04", content: "Todo Content04", c: TodoStatus.doing),
-    TodoContent(title: "Todo05", content: "Todo Content05", c: TodoStatus.done),
+        title: "Todo02", content: "Todo Content02", state: TodoStatus.to),
+    TodoContent(
+        title: "Todo03", content: "Todo Content03", state: TodoStatus.doing),
+    TodoContent(
+        title: "Todo04", content: "Todo Content04", state: TodoStatus.doing),
+    TodoContent(
+        title: "Todo05", content: "Todo Content05", state: TodoStatus.done),
   ];
-  List<TodoContent> selectedTodos;
+  List<TodoContent> selectedTodos = [];
   int navigation = 0;
 
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
@@ -72,8 +75,8 @@ class _TodoPageState extends State<TodoPage> {
               context, MaterialPageRoute(builder: (context) => NewTodoPage()));
           if (todo != null) {
             setState(() {
-              todos.add(
-                  TodoContent(title: todo["title"], content: todo["content"]));
+              todos.add(TodoContent(
+                  title: todo["title"]!, content: todo["content"]!));
             });
           }
         },

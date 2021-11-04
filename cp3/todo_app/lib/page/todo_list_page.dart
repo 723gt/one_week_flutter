@@ -4,7 +4,7 @@ import '../model/todo.dart';
 
 class TodoListPage extends StatelessWidget {
   final List<TodoContent> todos;
-  TodoListPage({this.todos});
+  TodoListPage({required this.todos});
   @override
   Widget build(BuildContext context) {
     return Container(

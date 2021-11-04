@@ -3,7 +3,7 @@ import '../model/todo.dart';
 
 class ShowTodoPage extends StatefulWidget {
   final TodoContent todo;
-  ShowTodoPage({Key key, this.todo});
+  ShowTodoPage({Key? key, required this.todo});
   @override
   _ShowTodoState createState() => _ShowTodoState();
 }

@@ -9,7 +9,7 @@ import './new_todo_page.dart';
 
 class TodoPage extends HookWidget {
   final String title;
-  TodoPage({Key key, this.title}) : super(key: key);
+  TodoPage({Key? key, required this.title}) : super(key: key);
 
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     BottomNavigationBarItem(

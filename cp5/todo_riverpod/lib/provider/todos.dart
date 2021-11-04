@@ -6,7 +6,7 @@ import './navigator.dart';
 class Todos extends StateNotifier<List<TodoContent>> {
   Todos(List<TodoContent> initTodos) : super(initTodos ?? []);
 
-  void add({String title, String content}) {
+  void add({required String title, required String content}) {
     state = [
       ...state,
       TodoContent(title: title, content: content),
@@ -18,17 +18,25 @@ class Todos extends StateNotifier<List<TodoContent>> {
   }
 }
 
-final todosProvider = StateNotifierProvider<Todos, List<TodoContent>>((ref) =>
-    Todos([
-      TodoContent(title: "Todo01", content: "Todo Content01", c: TodoStatus.to),
-      TodoContent(title: "Todo02", content: "Todo Content02", c: TodoStatus.to),
-      TodoContent(
-          title: "Todo03", content: "Todo Content03", c: TodoStatus.doing),
-      TodoContent(
-          title: "Todo04", content: "Todo Content04", c: TodoStatus.doing),
-      TodoContent(
-          title: "Todo05", content: "Todo Content05", c: TodoStatus.done),
-    ]));
+final todosProvider =
+    StateNotifierProvider<Todos, List<TodoContent>>((ref) => Todos([
+          TodoContent(
+              title: "Todo01", content: "Todo Content01", state: TodoStatus.to),
+          TodoContent(
+              title: "Todo02", content: "Todo Content02", state: TodoStatus.to),
+          TodoContent(
+              title: "Todo03",
+              content: "Todo Content03",
+              state: TodoStatus.doing),
+          TodoContent(
+              title: "Todo04",
+              content: "Todo Content04",
+              state: TodoStatus.doing),
+          TodoContent(
+              title: "Todo05",
+              content: "Todo Content05",
+              state: TodoStatus.done),
+        ]));
 
 final selectTodosProvider = Provider<List<TodoContent>>((ref) {
   final navigator = ref.watch(bottomNavigatorNumProvider);

@@ -13,7 +13,7 @@ class TodoListPage extends HookWidget {
     final snapshot = useFuture(futureTodoProvider);
     List<TodoContent> todos = [];
     if (snapshot.hasData) {
-      todos = snapshot.data;
+      todos = snapshot.data!;
     }
     return Container(
       child: Center(
